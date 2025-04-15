@@ -12,12 +12,18 @@ export const signInWithCredentials = async (
 ) => {
   const { email, password } = params;
 
+  const ip = (await headers()).get("x-forwarded-for") || "127.0.1";
+  const {success} = await ratelimit.limit(ip);
+
+  if(!success) return redirect("/too-fast");
+
   try {
     const result = await signIn("credentials", {
       email,
       password,
       redirect: false,
     });
+    
     if (result?.error) {
       return { success: false, error: result.error };
     }
