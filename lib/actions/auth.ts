@@ -6,6 +6,7 @@ import { users } from "@/database/schema";
 import { hash } from "bcryptjs";
 import { signIn } from "@/auth";
 import ratelimit from "@/ratelimit";
+import config from "@/lib/config";
 
 export const signInWithCredentials = async (
   params: Pick<AuthCredentials, "email" | "password">,
@@ -64,6 +65,14 @@ export const signUp = async (params: AuthCredentials) => {
       password: hashedPassword,
       universityCard,
     });
+
+    await workflowClient.trigger({
+      url: `${config.env.prodApiEndpoint/api/workflow/onboarding}`,
+      body:{
+        email,
+        fullName,
+      }
+    })
 
     await signInWithCredentials({ email, password });
 
