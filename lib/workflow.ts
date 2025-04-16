@@ -16,7 +16,7 @@ await qstashClient.publishJSON({
     provider: resend({ token: config.env.resendToken }),
   },
   body: {
-    from: "Libary management <websiteName>",
+    from: "Libary management <emailLinkingToProfessionalWebsite>",
     to: [email],
     subject,
     html: message,
