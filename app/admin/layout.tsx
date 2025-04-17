@@ -11,7 +11,7 @@ if(!sesson?.user?.id) redirect('/sign-in');
   
 return(
   <main className="flex min-h-screen w-full flex-row">
-  <Sidebar/>
+  <Sidebar session={Session}/>
     <div className="admin-container">
     <p>Header</p>
       {children}
