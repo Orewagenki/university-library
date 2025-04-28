@@ -185,7 +185,10 @@ const BookForm = ({
                         Primary Color
                   </FormLabel>
                   <FormControl>
-                        {/*Color Picker*/}
+                    <ColorPicker
+                        onPickerChange={field.change}
+                    value={field.value}
+                      />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
