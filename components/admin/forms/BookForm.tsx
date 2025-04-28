@@ -162,7 +162,15 @@ const BookForm = ({
                         Book Image
                   </FormLabel>
                   <FormControl>
-                          {/*File upload*/}
+                          <ImageUpload
+                            type="image"
+                            accept="image/*"
+                            placeholder="Upload a book cover"
+                            folder="book/covers"
+                            variant="light"
+                            onFileChange={field.onChange}
+                            value={field.value}
+                            />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -207,7 +215,15 @@ const BookForm = ({
                         Book Trailer
                   </FormLabel>
                   <FormControl>
-                          {/*File upload*/}
+                          <ImageUpload
+                            type="video"
+                            accept="video/*"
+                            placeholder="Upload a book trailer"
+                            folder="book/videos"
+                            variant="light"
+                            onFileChange={field.onChange}
+                            value={field.value}
+                            />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
