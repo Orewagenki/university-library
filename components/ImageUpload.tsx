@@ -38,14 +38,15 @@ interface Props {
   folder: string;
   variant: 'dark' | 'light';
   onFileChange: (filePath: string) => void;
+  value?: string;
 }
 
 const ImageUpload = ({
   type,accept,placeholder,folder,variant,
-  onFileChange,
+  onFileChange, value,
 }: {) => {
   const ikUploadRef = useRef(null);
-  const [file, setFile] = useState<{ filePath: string } | null>(null);
+  const [file, setFile] = useState<{ filePath: string | null}>({filepath: value ?? null,});
   const [progress, setProgress] = useState(0);
 
   const styles = {
