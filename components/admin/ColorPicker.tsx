@@ -1,4 +1,4 @@
-import { HexColorPicker } from "react-colorful"
+import { HexColorPicker, HexColorInput } from "react-colorful"
 import { useState} from "react";
 
 interface Props{
@@ -7,11 +7,16 @@ interface Props{
 }
 
 const ColorPicker = ({value, onPickerChange} : Props) => {
-  const [color,setColor] = useState("#aabbcc");
-const [isOpen, setIsOpen] = useState(false);
   
-  return <HexColorPicker color ={color}
-           onChange={setColor} />;
-};
+  return(
+    <div className="relative">
+      <div className="flex flex-row items-center">
+        <p>#</p>
+      <HexColorInput color={value} onChange={onPickerChange} className="hex-input"/>
+      </div>
+    <HexColorPicker color ={value} onChange={onPickerChange} />
+    </div>
+    );
+    };
 
 export default ColorPicker;
