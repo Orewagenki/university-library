@@ -1,7 +1,7 @@
 'use server';
 import { db} from "@/database/drizzle";
 
-const createBook = async (BookParams){
+const createBook = async (params: BookParams){
 try{
   const newBook = await db
   .insert(books)
